@@ -31,21 +31,21 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            label4 = new Label();
             label5 = new Label();
-            firstNameTextBox = new RichTextBox();
-            lastNameTextBox = new RichTextBox();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
             label9 = new Label();
             label10 = new Label();
             label11 = new Label();
-            label4 = new Label();
-            postalTextBox = new RichTextBox();
-            stateTextBox = new RichTextBox();
-            cityTextBox = new RichTextBox();
-            streetTextBox = new RichTextBox();
+            firstNameTextBox = new RichTextBox();
+            lastNameTextBox = new RichTextBox();
             houseNumTextBox = new RichTextBox();
+            streetTextBox = new RichTextBox();
+            cityTextBox = new RichTextBox();
+            stateTextBox = new RichTextBox();
+            postalTextBox = new RichTextBox();
             countryTextBox = new RichTextBox();
             gradeTextBox = new RichTextBox();
             monthListBox = new ListBox();
@@ -79,6 +79,15 @@
             label3.TabIndex = 3;
             label3.Text = "Address:";
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(23, 278);
+            label4.Name = "label4";
+            label4.Size = new Size(49, 20);
+            label4.TabIndex = 16;
+            label4.Text = "Grade";
+            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -87,24 +96,6 @@
             label5.Size = new Size(141, 20);
             label5.TabIndex = 5;
             label5.Text = "Month of admission";
-            // 
-            // firstNameTextBox
-            // 
-            firstNameTextBox.Location = new Point(109, 38);
-            firstNameTextBox.Name = "firstNameTextBox";
-            firstNameTextBox.ScrollBars = RichTextBoxScrollBars.None;
-            firstNameTextBox.Size = new Size(278, 22);
-            firstNameTextBox.TabIndex = 6;
-            firstNameTextBox.Text = "";
-            // 
-            // lastNameTextBox
-            // 
-            lastNameTextBox.Location = new Point(108, 66);
-            lastNameTextBox.Name = "lastNameTextBox";
-            lastNameTextBox.ScrollBars = RichTextBoxScrollBars.None;
-            lastNameTextBox.Size = new Size(278, 22);
-            lastNameTextBox.TabIndex = 9;
-            lastNameTextBox.Text = "";
             // 
             // label6
             // 
@@ -160,32 +151,41 @@
             label11.TabIndex = 15;
             label11.Text = "House Number";
             // 
-            // label4
+            // firstNameTextBox
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(23, 278);
-            label4.Name = "label4";
-            label4.Size = new Size(49, 20);
-            label4.TabIndex = 16;
-            label4.Text = "Grade";
+            firstNameTextBox.Location = new Point(109, 38);
+            firstNameTextBox.Name = "firstNameTextBox";
+            firstNameTextBox.ScrollBars = RichTextBoxScrollBars.None;
+            firstNameTextBox.Size = new Size(278, 22);
+            firstNameTextBox.TabIndex = 6;
+            firstNameTextBox.Text = "";
             // 
-            // postalTextBox
+            // lastNameTextBox
             // 
-            postalTextBox.Location = new Point(170, 217);
-            postalTextBox.Name = "postalTextBox";
-            postalTextBox.ScrollBars = RichTextBoxScrollBars.None;
-            postalTextBox.Size = new Size(278, 22);
-            postalTextBox.TabIndex = 17;
-            postalTextBox.Text = "";
+            lastNameTextBox.Location = new Point(108, 66);
+            lastNameTextBox.Name = "lastNameTextBox";
+            lastNameTextBox.ScrollBars = RichTextBoxScrollBars.None;
+            lastNameTextBox.Size = new Size(278, 22);
+            lastNameTextBox.TabIndex = 9;
+            lastNameTextBox.Text = "";
             // 
-            // stateTextBox
+            // houseNumTextBox
             // 
-            stateTextBox.Location = new Point(170, 194);
-            stateTextBox.Name = "stateTextBox";
-            stateTextBox.ScrollBars = RichTextBoxScrollBars.None;
-            stateTextBox.Size = new Size(278, 22);
-            stateTextBox.TabIndex = 18;
-            stateTextBox.Text = "";
+            houseNumTextBox.Location = new Point(170, 122);
+            houseNumTextBox.Name = "houseNumTextBox";
+            houseNumTextBox.ScrollBars = RichTextBoxScrollBars.None;
+            houseNumTextBox.Size = new Size(278, 22);
+            houseNumTextBox.TabIndex = 17;
+            houseNumTextBox.Text = "";
+            // 
+            // streetTextBox
+            // 
+            streetTextBox.Location = new Point(170, 145);
+            streetTextBox.Name = "streetTextBox";
+            streetTextBox.ScrollBars = RichTextBoxScrollBars.None;
+            streetTextBox.Size = new Size(278, 22);
+            streetTextBox.TabIndex = 18;
+            streetTextBox.Text = "";
             // 
             // cityTextBox
             // 
@@ -196,23 +196,23 @@
             cityTextBox.TabIndex = 19;
             cityTextBox.Text = "";
             // 
-            // streetTextBox
+            // stateTextBox
             // 
-            streetTextBox.Location = new Point(170, 145);
-            streetTextBox.Name = "streetTextBox";
-            streetTextBox.ScrollBars = RichTextBoxScrollBars.None;
-            streetTextBox.Size = new Size(278, 22);
-            streetTextBox.TabIndex = 20;
-            streetTextBox.Text = "";
+            stateTextBox.Location = new Point(170, 194);
+            stateTextBox.Name = "stateTextBox";
+            stateTextBox.ScrollBars = RichTextBoxScrollBars.None;
+            stateTextBox.Size = new Size(278, 22);
+            stateTextBox.TabIndex = 20;
+            stateTextBox.Text = "";
             // 
-            // houseNumTextBox
+            // postalTextBox
             // 
-            houseNumTextBox.Location = new Point(170, 122);
-            houseNumTextBox.Name = "houseNumTextBox";
-            houseNumTextBox.ScrollBars = RichTextBoxScrollBars.None;
-            houseNumTextBox.Size = new Size(278, 22);
-            houseNumTextBox.TabIndex = 21;
-            houseNumTextBox.Text = "";
+            postalTextBox.Location = new Point(170, 217);
+            postalTextBox.Name = "postalTextBox";
+            postalTextBox.ScrollBars = RichTextBoxScrollBars.None;
+            postalTextBox.Size = new Size(278, 22);
+            postalTextBox.TabIndex = 21;
+            postalTextBox.Text = "";
             // 
             // countryTextBox
             // 
@@ -290,21 +290,21 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private Label label4;
         private Label label5;
-        private RichTextBox firstNameTextBox;
-        private RichTextBox lastNameTextBox;
         private Label label6;
         private Label label7;
         private Label label8;
         private Label label9;
         private Label label10;
         private Label label11;
-        private Label label4;
-        private RichTextBox postalTextBox;
-        private RichTextBox stateTextBox;
-        private RichTextBox cityTextBox;
-        private RichTextBox streetTextBox;
+        private RichTextBox firstNameTextBox;
+        private RichTextBox lastNameTextBox;
         private RichTextBox houseNumTextBox;
+        private RichTextBox streetTextBox;
+        private RichTextBox cityTextBox;
+        private RichTextBox stateTextBox;
+        private RichTextBox postalTextBox;
         private RichTextBox countryTextBox;
         private RichTextBox gradeTextBox;
         private ListBox monthListBox;

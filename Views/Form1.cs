@@ -7,10 +7,16 @@ namespace StudentRegistry
     public partial class Form1 : Form
     {
         internal BindingList<Student> students = new();
+        BindingList<Months> monthsList = new();
         public int nextID = 0;
         public Form1()
         {
             InitializeComponent();
+
+            foreach (Months month in Enum.GetValues(typeof(Months)))
+            {
+                monthsList.Add(month);
+            }
 
             students.Add(new Student(nextID, "John", "Doe", new Address("123", "Street Ave", "John's City", "NJ", "02345", "US"), 'A', Months.April, out nextID));
             students.Add(new Student(nextID, "Jane", "Smith", new Address("345", "Avenue St", "Jane's City", "MA", "29345", "US"), 'B', Months.July, out nextID));
@@ -21,7 +27,7 @@ namespace StudentRegistry
 
         private void addStudentButton_Click(object sender, EventArgs e)
         {
-            AddView addViewForm = new AddView(nextID);
+            AddView addViewForm = new AddView(nextID, monthsList);
             if (addViewForm.ShowDialog() == DialogResult.OK && addViewForm.CreatedStudent != null)
             {
                 students.Add(addViewForm.CreatedStudent);
@@ -38,7 +44,7 @@ namespace StudentRegistry
             }
 
             Student selectedStudent = (Student)dataGridView1.SelectedRows[0].DataBoundItem;
-            DelView delViewForm = new(selectedStudent, students);
+            EditDelView delViewForm = new(selectedStudent, students, monthsList);
 
             if (delViewForm.ShowDialog() == DialogResult.OK && delViewForm.isDeleted)
             {

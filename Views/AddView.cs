@@ -11,19 +11,15 @@ namespace StudentRegistry
 {
     public partial class AddView : Form
     {
-        BindingList<Months> months = new();
+        
         public int nextStudentID;
         internal Student? CreatedStudent;
-        public AddView(int nextID)
+        public AddView(int nextID, BindingList<Months> months)
         {
             InitializeComponent();
 
-            foreach (Months month in Enum.GetValues(typeof(Months)))
-            {
-                months.Add(month);
-            }
+            
             monthListBox.DataSource = months;
-
             nextStudentID = nextID;
         }
 

@@ -6,12 +6,12 @@ namespace StudentRegistry.Models
 {
     internal class Address
     {
-        private string HouseNumber { get; set; } = "";
-        private string Street { get; set; } = "";
-        private string City { get; set; } = "";
-        private string StateOrProvince { get; set; } = "";
-        private string PostalCode { get; set; } = "";
-        private string Country { get; set; } = "";
+        public string HouseNumber { get; set; } = "";
+        public string Street { get; set; } = "";
+        public string City { get; set; } = "";
+        public string StateOrProvince { get; set; } = "";
+        public string PostalCode { get; set; } = "";
+        public string Country { get; set; } = "";
 
         public Address(string houseNum, string street, string city, string state, string zipCode, string country)
         {

@@ -40,12 +40,13 @@
             // dataGridView1
             // 
             dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.Location = new Point(31, 29);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(732, 374);
+            dataGridView1.Size = new Size(1024, 374);
             dataGridView1.TabIndex = 0;
             // 
             // bindingSource1
@@ -64,19 +65,19 @@
             // 
             // delStudentButton
             // 
-            delStudentButton.Location = new Point(647, 409);
+            delStudentButton.Location = new Point(881, 409);
             delStudentButton.Name = "delStudentButton";
-            delStudentButton.Size = new Size(116, 29);
+            delStudentButton.Size = new Size(174, 29);
             delStudentButton.TabIndex = 2;
-            delStudentButton.Text = "Delete Student";
+            delStudentButton.Text = "Edit / Delete Student";
             delStudentButton.UseVisualStyleBackColor = true;
-            delStudentButton.Click += this.delStudentButton_Click;
+            delStudentButton.Click += delStudentButton_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1092, 450);
             Controls.Add(delStudentButton);
             Controls.Add(addStudentButton);
             Controls.Add(dataGridView1);
