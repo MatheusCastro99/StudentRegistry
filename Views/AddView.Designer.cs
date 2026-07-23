@@ -50,6 +50,7 @@
             gradeTextBox = new RichTextBox();
             monthListBox = new ListBox();
             submitButton = new Button();
+            backButton = new Button();
             SuspendLayout();
             // 
             // label1
@@ -244,7 +245,7 @@
             // 
             // submitButton
             // 
-            submitButton.Location = new Point(289, 382);
+            submitButton.Location = new Point(555, 409);
             submitButton.Name = "submitButton";
             submitButton.Size = new Size(233, 29);
             submitButton.TabIndex = 25;
@@ -252,11 +253,22 @@
             submitButton.UseVisualStyleBackColor = true;
             submitButton.Click += submitButton_Click;
             // 
+            // backButton
+            // 
+            backButton.Location = new Point(12, 409);
+            backButton.Name = "backButton";
+            backButton.Size = new Size(233, 29);
+            backButton.TabIndex = 26;
+            backButton.Text = "Back";
+            backButton.UseVisualStyleBackColor = true;
+            backButton.Click += backButton_Click;
+            // 
             // AddView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(backButton);
             Controls.Add(submitButton);
             Controls.Add(monthListBox);
             Controls.Add(gradeTextBox);
@@ -279,8 +291,10 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "AddView";
-            Text = "AddView";
+            Text = "Add Student";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -309,5 +323,6 @@
         private RichTextBox gradeTextBox;
         private ListBox monthListBox;
         private Button submitButton;
+        private Button backButton;
     }
 }

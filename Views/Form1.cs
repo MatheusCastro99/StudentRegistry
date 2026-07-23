@@ -46,7 +46,7 @@ namespace StudentRegistry
             Student selectedStudent = (Student)dataGridView1.SelectedRows[0].DataBoundItem;
             EditDelView delViewForm = new(selectedStudent, students, monthsList);
 
-            if (delViewForm.ShowDialog() == DialogResult.OK && delViewForm.isDeleted)
+            if (delViewForm.ShowDialog() == DialogResult.OK && (delViewForm.isDeleted || delViewForm.isEdited))
             {
                 students = delViewForm.newList;
             }

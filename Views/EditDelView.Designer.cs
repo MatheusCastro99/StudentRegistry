@@ -53,13 +53,14 @@
             CountryEditTextBox = new RichTextBox();
             gradeEditTextBox = new RichTextBox();
             monthEditListBox = new ListBox();
+            confirmEditButton = new Button();
             SuspendLayout();
             // 
             // confirmDelButton
             // 
-            confirmDelButton.Location = new Point(502, 384);
+            confirmDelButton.Location = new Point(609, 409);
             confirmDelButton.Name = "confirmDelButton";
-            confirmDelButton.Size = new Size(286, 29);
+            confirmDelButton.Size = new Size(179, 29);
             confirmDelButton.TabIndex = 0;
             confirmDelButton.Text = "Confirm Delete";
             confirmDelButton.UseVisualStyleBackColor = true;
@@ -69,7 +70,7 @@
             // 
             backButton.Location = new Point(12, 384);
             backButton.Name = "backButton";
-            backButton.Size = new Size(286, 29);
+            backButton.Size = new Size(173, 29);
             backButton.TabIndex = 1;
             backButton.Text = "Back";
             backButton.UseVisualStyleBackColor = true;
@@ -282,11 +283,22 @@
             monthEditListBox.Size = new Size(159, 24);
             monthEditListBox.TabIndex = 24;
             // 
+            // confirmEditButton
+            // 
+            confirmEditButton.Location = new Point(609, 374);
+            confirmEditButton.Name = "confirmEditButton";
+            confirmEditButton.Size = new Size(179, 29);
+            confirmEditButton.TabIndex = 25;
+            confirmEditButton.Text = "Confirm Edit";
+            confirmEditButton.UseVisualStyleBackColor = true;
+            confirmEditButton.Click += confirmEditButton_Click;
+            // 
             // EditDelView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(confirmEditButton);
             Controls.Add(monthEditListBox);
             Controls.Add(gradeEditTextBox);
             Controls.Add(CountryEditTextBox);
@@ -312,8 +324,10 @@
             Controls.Add(label1);
             Controls.Add(backButton);
             Controls.Add(confirmDelButton);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "EditDelView";
-            Text = "DelView";
+            Text = "Edit Student";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -345,5 +359,6 @@
         private RichTextBox CountryEditTextBox;
         private RichTextBox gradeEditTextBox;
         private ListBox monthEditListBox;
+        private Button confirmEditButton;
     }
 }

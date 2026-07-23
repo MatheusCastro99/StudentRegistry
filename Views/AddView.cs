@@ -11,14 +11,14 @@ namespace StudentRegistry
 {
     public partial class AddView : Form
     {
-        
+
         public int nextStudentID;
         internal Student? CreatedStudent;
         public AddView(int nextID, BindingList<Months> months)
         {
             InitializeComponent();
 
-            
+
             monthListBox.DataSource = months;
             nextStudentID = nextID;
         }
@@ -40,6 +40,11 @@ namespace StudentRegistry
 
             CreatedStudent = new(nextStudentID, firstname, lastName, new Address(houseNum, street, city, state, postal, country), grade, admissionMonth, out nextStudentID);
             DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
             Close();
         }
     }
