@@ -1,4 +1,5 @@
-﻿using StudentRegistry.Models;
+﻿using StudentRegistry.Components;
+using StudentRegistry.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,11 +20,11 @@ namespace StudentRegistry
             InitializeComponent();
 
 
-            monthListBox.DataSource = months;
+            monthListBox.DataSource = months; //populates monthListBox with enum Months List
             nextStudentID = nextID;
         }
 
-        private void submitButton_Click(object sender, EventArgs e)
+        private void submitButton_Click(object sender, EventArgs e) //Attempts to create new student and closes pop-up window
         {
             string firstname = firstNameTextBox.Text;
             string lastName = lastNameTextBox.Text;
@@ -35,7 +36,8 @@ namespace StudentRegistry
             string country = countryTextBox.Text;
             string postal = postalTextBox.Text;
 
-            char grade = gradeTextBox.Text[0];
+            double grade; 
+            double.TryParse(gradeTextBox.Text, out grade);
             Months admissionMonth = (Months)monthListBox.SelectedItem;
 
             CreatedStudent = new(nextStudentID, firstname, lastName, new Address(houseNum, street, city, state, postal, country), grade, admissionMonth, out nextStudentID);
@@ -43,7 +45,7 @@ namespace StudentRegistry
             Close();
         }
 
-        private void backButton_Click(object sender, EventArgs e)
+        private void backButton_Click(object sender, EventArgs e) //Closes pop-up window without saving any info
         {
             Close();
         }

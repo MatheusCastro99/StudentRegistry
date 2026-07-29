@@ -227,7 +227,7 @@
             // gradeTextBox
             // 
             gradeTextBox.Location = new Point(78, 278);
-            gradeTextBox.MaxLength = 1;
+            gradeTextBox.MaxLength = 3;
             gradeTextBox.Name = "gradeTextBox";
             gradeTextBox.ScrollBars = RichTextBoxScrollBars.None;
             gradeTextBox.Size = new Size(63, 20);

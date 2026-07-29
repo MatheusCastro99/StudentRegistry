@@ -1,4 +1,5 @@
-﻿using StudentRegistry.Models;
+﻿using StudentRegistry.Components;
+using StudentRegistry.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace StudentRegistry.Views
     {
         internal BindingList<Student> newList;
         Student currentStudent;
-        public bool isDeleted;
+        public bool isDeleted; //These bools are how MainView keeps track of what happened in this window
         public bool isEdited;
         internal EditDelView(Student selectedStudent, BindingList<Student> studentsList, BindingList<Months> months)
         {
@@ -22,7 +23,7 @@ namespace StudentRegistry.Views
             currentStudent = selectedStudent;
             newList = studentsList;
 
-            //Populate Edit Views
+            //Populate Textboxes with selected student
             studentIDEditTextBox.Text = currentStudent.StudentID.ToString();
             firstNameEditTextBox.Text = currentStudent.FirstName;
             lastNameEditTextBox.Text = currentStudent.LastName;
@@ -32,19 +33,19 @@ namespace StudentRegistry.Views
             stateEditTextBox.Text = currentStudent.Address.StateOrProvince;
             postalCodeEditTextBox.Text = currentStudent.Address.PostalCode;
             CountryEditTextBox.Text = currentStudent.Address.Country;
-            gradeEditTextBox.Text = currentStudent.Grade.ToString();
+            gradeEditTextBox.Text = currentStudent.GPA.ToString();
 
             monthEditListBox.DataSource = months;
-            monthEditListBox.SelectedIndex = Convert.ToInt32(currentStudent.MonthOfAdmission) - 1;
+            monthEditListBox.SelectedIndex = Convert.ToInt32(currentStudent.MonthOfAdmission) - 1; //Months Enum go from 1 - 12
         }
 
-        private void confirmDelButton_Click(object sender, EventArgs e)
+        private void confirmDelButton_Click(object sender, EventArgs e) //Displays warning message before deleting student
         {
             DialogResult result = MessageBox.Show(
-                "Wish to delete student?\n(Irreversible)",         // Message body
-                "Confirm Deletion",               // Title bar
-                MessageBoxButtons.YesNo,          // Yes = Proceed, No = Back
-                MessageBoxIcon.Warning            // Visual icon
+                "Wish to delete student?\n(Irreversible)",   
+                "Confirm Deletion",               
+                MessageBoxButtons.YesNo,          
+                MessageBoxIcon.Warning            
              );
 
             if (result == DialogResult.Yes) 
@@ -57,13 +58,14 @@ namespace StudentRegistry.Views
             }
         }
 
-        private void backButton_Click(object sender, EventArgs e)
+        private void backButton_Click(object sender, EventArgs e) //Closes pop-up window without changing any info
         {
             Close();
         }
 
-        private void confirmEditButton_Click(object sender, EventArgs e)
+        private void confirmEditButton_Click(object sender, EventArgs e) //overrides selected student info with new info inputted 
         {
+            double newGPA;
             currentStudent.FirstName = firstNameEditTextBox.Text;
             currentStudent.LastName = lastNameEditTextBox.Text;
 
@@ -74,11 +76,12 @@ namespace StudentRegistry.Views
             currentStudent.Address.PostalCode = postalCodeEditTextBox.Text;
             currentStudent.Address.Country = CountryEditTextBox.Text;
 
-            currentStudent.Grade = gradeEditTextBox.Text[0];
+            double.TryParse(gradeEditTextBox.Text, out newGPA);
+            currentStudent.GPA = newGPA;
             currentStudent.MonthOfAdmission = (Months)monthEditListBox.SelectedItem;
 
             isEdited = true;
-            newList.ResetItem(currentStudent.StudentID);
+            newList.ResetItem(currentStudent.StudentID); //hot reloads BindingList newList using StudentID as index (not optimal)
 
             DialogResult = DialogResult.OK;
             Close();

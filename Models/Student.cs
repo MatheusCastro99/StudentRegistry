@@ -3,25 +3,23 @@ using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using StudentRegistry;
+using StudentRegistry.Components;
 
 namespace StudentRegistry.Models
 {
-    internal class Student
+    internal class Student : User
     {
         public int StudentID {  get; set; }
-        public string FirstName { get; set; } = "";
-        public string LastName { get; set; } = "";
-        public Address? Address { get; set; }
-        public char Grade { get; set; }
+        public double GPA { get; set; }
         public Months MonthOfAdmission { get; set; } = Months.January;
 
-        public Student(int ID, string firstName, string lastName, Address address, char grade, Months month, out int nextID)
+        public Student(int ID, string firstName, string lastName, Address address, double grade, Months month, out int nextID)
         {
             StudentID = ID;
             FirstName = firstName;
             LastName = lastName;
             Address = address;
-            Grade = grade;
+            GPA = grade;
             MonthOfAdmission = month;
 
             nextID = StudentID+1;
@@ -39,7 +37,7 @@ namespace StudentRegistry.Models
                             $"ID: {StudentID}\n" +
                             $"Name: {FirstName} {LastName}\n" +
                             $"Address: {pontentialAddress}\n" +
-                            $"Grade: {Grade}\n" +
+                            $"Grade: {GPA}\n" +
                             $"Admission: {MonthOfAdmission}\n" +
                             $"=====================================";
 

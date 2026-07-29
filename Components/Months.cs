@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace StudentRegistry.Models
+namespace StudentRegistry.Components
 {
     public enum Months
     {
