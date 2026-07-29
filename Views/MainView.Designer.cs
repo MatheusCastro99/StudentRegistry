@@ -36,17 +36,19 @@
             logInButton = new Button();
             logOutButton = new Button();
             studentAwardButton = new Button();
+            label1 = new Label();
+            welcomeTeacherLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
-            dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.AutoGenerateColumns = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.DataSource = bindingSource1;
-            dataGridView1.Location = new Point(31, 29);
+            dataGridView1.Location = new Point(31, 97);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(1024, 219);
@@ -58,7 +60,7 @@
             // 
             // addStudentButton
             // 
-            addStudentButton.Location = new Point(31, 254);
+            addStudentButton.Location = new Point(31, 322);
             addStudentButton.Name = "addStudentButton";
             addStudentButton.Size = new Size(118, 29);
             addStudentButton.TabIndex = 1;
@@ -68,7 +70,7 @@
             // 
             // delStudentButton
             // 
-            delStudentButton.Location = new Point(31, 289);
+            delStudentButton.Location = new Point(31, 357);
             delStudentButton.Name = "delStudentButton";
             delStudentButton.Size = new Size(174, 29);
             delStudentButton.TabIndex = 2;
@@ -106,11 +108,32 @@
             studentAwardButton.UseVisualStyleBackColor = true;
             studentAwardButton.Click += studentAwardButton_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(31, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(327, 31);
+            label1.TabIndex = 6;
+            label1.Text = "Learning Management System";
+            // 
+            // welcomeTeacherLabel
+            // 
+            welcomeTeacherLabel.AutoSize = true;
+            welcomeTeacherLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            welcomeTeacherLabel.Location = new Point(133, 58);
+            welcomeTeacherLabel.Name = "welcomeTeacherLabel";
+            welcomeTeacherLabel.Size = new Size(0, 28);
+            welcomeTeacherLabel.TabIndex = 7;
+            // 
             // MainView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1092, 450);
+            Controls.Add(welcomeTeacherLabel);
+            Controls.Add(label1);
             Controls.Add(studentAwardButton);
             Controls.Add(logOutButton);
             Controls.Add(logInButton);
@@ -125,6 +148,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -136,5 +160,7 @@
         private Button logInButton;
         private Button logOutButton;
         private Button studentAwardButton;
+        private Label label1;
+        private Label welcomeTeacherLabel;
     }
 }

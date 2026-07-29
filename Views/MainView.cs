@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic.ApplicationServices;
 using StudentRegistry.Components;
 using StudentRegistry.Models;
 using StudentRegistry.Views;
@@ -8,7 +9,7 @@ namespace StudentRegistry
     public partial class MainView : Form
     {
         internal BindingList<Student> students = new();
-        internal Teacher currentTeacher;
+        internal BindingList<Teacher> teachers = new();
 
         BindingList<Months> monthsList = new();
         public int nextID; // Will handle automatic ID generation
@@ -24,7 +25,7 @@ namespace StudentRegistry
                 monthsList.Add(month);
             }
 
-            MockData initialMockData = new(students, out currentTeacher); //Initializes some mock data
+            MockData initialMockData = new(students, teachers); //Initializes some mock data
 
             LogInHandler(isLoggedIn);
         }
@@ -45,6 +46,8 @@ namespace StudentRegistry
 
                 logInButton.Enabled = false;
                 logInButton.Visible = false;
+
+                welcomeTeacherLabel.Text = $"Welcome, {currentSession.CurrentFirstName}";
             }
             else
             {
@@ -59,6 +62,8 @@ namespace StudentRegistry
 
                 logInButton.Enabled = true;
                 logInButton.Visible = true;
+
+                welcomeTeacherLabel.Text = string.Empty;
             }
         }
 
@@ -97,9 +102,11 @@ namespace StudentRegistry
 
         private void logInButton_Click(object sender, EventArgs e) //pop-up window to allow user to log in
         {
-            LogInView logInView = new(currentTeacher);
+            LogInView logInView = new(teachers);
             if (logInView.ShowDialog() == DialogResult.OK)
             {
+                dataGridView1.AutoGenerateColumns = true;
+
                 currentSession = logInView.currentSession;
                 isLoggedIn = true;
                 LogInHandler(isLoggedIn);
@@ -111,7 +118,6 @@ namespace StudentRegistry
 
                 Application.Exit();
             }
-
         }
 
         private void logOutButton_Click(object sender, EventArgs e) //Logs user out
@@ -124,11 +130,17 @@ namespace StudentRegistry
         private void studentAwardButton_Click(object sender, EventArgs e) //Generates a txt file with the information of the highest GPA student
         {
             Student bestStudent = students.OrderByDescending(s => s.GPA).ToList()[0];
-            using (StreamWriter writer = new StreamWriter("award.txt"))
+
+            string awardPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\StudentAwards\award.txt"));
+            Directory.CreateDirectory(Path.GetDirectoryName(awardPath));
+
+            using (StreamWriter writer = new StreamWriter(awardPath))
             {
                 writer.WriteLine("Best Student Award\n");
                 writer.WriteLine($"Student Name: {bestStudent.FirstName} {bestStudent.LastName}");
                 writer.WriteLine($"GPA: {bestStudent.GPA}");
+
+                MessageBox.Show($"Award saved to\n{awardPath}", "Award Saved!");
             }
 
         }

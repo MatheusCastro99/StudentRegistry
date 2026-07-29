@@ -15,14 +15,13 @@ namespace StudentRegistry.Views
         string AttemptedName { get; set; } = "";
         string AttemptedPass { get; set; } = "";
         int AttemptsLeft { get; set; } = 5;
-        private string[] validCredentials = new string[2];
+        private BindingList<Teacher> validCredentialsList;
 
         public SessionContext currentSession = new();
-        internal LogInView(Teacher validCredentials) //Initializes LogInView window and stores valid credentials
+        internal LogInView(BindingList<Teacher> validCredentials) //Initializes LogInView window and stores valid credentials
         {
             InitializeComponent();
-            this.validCredentials[0] = validCredentials.Username;
-            this.validCredentials[1] = validCredentials.Password;
+            validCredentialsList = validCredentials;
         }
 
         private void attemptLogInButton_Click(object sender, EventArgs e) //Button event handler that calls on method to Validate fields
@@ -35,9 +34,10 @@ namespace StudentRegistry.Views
 
         private void ValidateUser(string username, string password)  //User validation and logic
         {
-            if (username == validCredentials[0] && password == validCredentials[1]) 
+            if (validCredentialsList.Any(t => t.Username == username && t.Password == password)) 
             {
-                currentSession = new(validCredentials[0]);
+                Teacher currentTeacher = validCredentialsList.FirstOrDefault(t => t.Username == username && t.Password == password); //After validating that credentials exits, fetches Teacher instance
+                currentSession = new(currentTeacher.Username, currentTeacher.FirstName);                                             //And passes it to ContextSession
                 DialogResult = DialogResult.OK;
                 Close();
             }
